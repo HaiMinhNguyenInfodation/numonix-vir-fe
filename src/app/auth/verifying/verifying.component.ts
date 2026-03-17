@@ -69,10 +69,8 @@ export class VerifyingComponent implements OnInit {
         this.router.navigate(['/unauthorized']);
         return;
       }
-      if (!result.canViewReports) {
-        this.router.navigate(['/unauthorized'], { queryParams: { reason: 'report' } });
-        return;
-      }
+      // User has LOGIN: always go to dashboard. If no report permission,
+      // they will see the inline "no permission" message when opening Reports.
       this.router.navigate(['/app/dashboard']);
     });
   }
