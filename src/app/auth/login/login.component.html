@@ -1,0 +1,40 @@
+<div class="login-container">
+    <mat-card class="login-card">
+        <mat-card-content>
+            <div class="card-body">
+                <img src="https://teamscx.de.numonix.cloud/assets/images/ix_cloud_logo_color.svg" alt="Numonix IXCloud"
+                    class="login-logo" />
+
+                <h1 class="app-title">TeamsCX</h1>
+
+                @if (isLoading()) {
+                <div class="loading-state">
+                    <mat-spinner diameter="40"></mat-spinner>
+                    <p>Redirecting to Microsoft login...</p>
+                </div>
+                } @else {
+                @if (errorMessage()) {
+                <div class="error-message">
+                    <mat-icon>error_outline</mat-icon>
+                    <span>{{ errorMessage() }}</span>
+                </div>
+                }
+
+                <button class="ms-sign-in-btn" (click)="login()">
+                    <svg class="ms-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21">
+                        <rect x="1" y="1" width="9" height="9" fill="#F25022" />
+                        <rect x="11" y="1" width="9" height="9" fill="#7FBA00" />
+                        <rect x="1" y="11" width="9" height="9" fill="#00A4EF" />
+                        <rect x="11" y="11" width="9" height="9" fill="#FFB900" />
+                    </svg>
+                    Sign in with Microsoft
+                </button>
+                }
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <footer class="login-footer">
+        <a href="#">Terms of Service, Privacy &amp; Policies</a>
+    </footer>
+</div>

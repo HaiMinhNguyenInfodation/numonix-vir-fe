@@ -1,0 +1,24 @@
+<div class="sidenav-wrapper">
+    <div class="sidenav-logo">
+        <img src="https://teamscx.de.numonix.cloud/assets/images/ix_cloud_logo_color.svg" alt="Numonix"
+            class="nav-logo" />
+    </div>
+
+    <mat-nav-list class="nav-list">
+        @for (item of navItems; track item.route) {
+        <a mat-list-item [routerLink]="item.route" routerLinkActive="active-link" (click)="navItemClicked.emit()">
+            <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+            <span matListItemTitle>{{ item.label }}</span>
+        </a>
+        }
+    </mat-nav-list>
+
+    <div class="sidenav-footer">
+        <div class="admin-section">
+            <mat-icon>settings</mat-icon>
+            <span>Admin</span>
+            <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
+        </div>
+        <div class="version-text">Version: 20250205.172654</div>
+    </div>
+</div>

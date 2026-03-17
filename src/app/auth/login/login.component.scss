@@ -1,0 +1,113 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' opacity='0.07'%3E%3Ctext x='10' y='30' font-size='22' fill='%23888'%3E%F0%9F%8E%A4%3C/text%3E%3Ctext x='60' y='30' font-size='22' fill='%23888'%3E%F0%9F%93%B9%3C/text%3E%3Ctext x='10' y='75' font-size='22' fill='%23888'%3E%F0%9F%92%AC%3C/text%3E%3Ctext x='60' y='75' font-size='22' fill='%23888'%3E%F0%9F%94%94%3C/text%3E%3C/svg%3E");
+    gap: 16px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.10) !important;
+
+    mat-card-content {
+        padding: 0 !important;
+    }
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 40px 36px;
+    gap: 0;
+}
+
+.login-logo {
+    height: 80px;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+.app-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 28px;
+    letter-spacing: 0.01em;
+}
+
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 0;
+    width: 100%;
+
+    p {
+        color: #666;
+        margin: 0;
+        font-size: 0.9rem;
+    }
+}
+
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 8px;
+    background: var(--mat-sys-error-container);
+    color: var(--mat-sys-on-error-container);
+    margin-bottom: 16px;
+    width: 100%;
+
+    mat-icon {
+        flex-shrink: 0;
+    }
+}
+
+.ms-sign-in-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    height: 44px;
+    background: #fff;
+    border: 1px solid #8c8c8c;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: #1a1a1a;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover {
+        background: #f5f5f5;
+    }
+
+    .ms-logo {
+        width: 21px;
+        height: 21px;
+        flex-shrink: 0;
+    }
+}
+
+.login-footer {
+    a {
+        color: #1a73e8;
+        font-size: 0.85rem;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

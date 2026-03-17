@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" class="app-toolbar">
+    <button mat-icon-button (click)="menuToggle.emit()" aria-label="Toggle menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="page-title">{{ pageTitle() }}</span>
+
+    <span class="toolbar-spacer"></span>
+
+    <button type="button" [matMenuTriggerFor]="userMenu" class="user-btn" aria-label="Open user menu">
+        <span class="user-text">
+            <span class="user-name">{{ userDisplayName() || 'User' }}</span>
+            <span class="user-subtitle">{{ userSubtitle() }}</span>
+        </span>
+        <span class="user-avatar">{{ userInitials() || 'U' }}</span>
+    </button>
+
+    <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Sign Out</span>
+        </button>
+    </mat-menu>
+</mat-toolbar>

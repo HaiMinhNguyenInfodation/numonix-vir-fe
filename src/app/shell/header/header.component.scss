@@ -1,0 +1,81 @@
+.app-toolbar {
+    background: #ffffff;
+    color: #333333;
+    border-bottom: 1px solid #e0e0e0;
+    height: 56px;
+    flex-shrink: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.page-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-left: 4px;
+}
+
+.toolbar-spacer {
+    flex: 1;
+}
+
+.user-btn {
+    border: 0;
+    background: transparent;
+    padding: 4px 8px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    color: #1f2937;
+    cursor: pointer;
+
+    &:hover {
+        background: #f3f4f6;
+    }
+}
+
+.notif-btn {
+    color: #555;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 4px;
+}
+
+.user-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.user-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #243b5f;
+}
+
+.user-subtitle {
+    font-size: 0.78rem;
+    color: #6b7280;
+}
+
+.user-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #5d78dd;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.88rem;
+    flex-shrink: 0;
+}
