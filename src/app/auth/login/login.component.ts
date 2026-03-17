@@ -30,9 +30,9 @@ export class LoginComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        // If already authenticated, go to app
+        // If already authenticated, go to verification then app
         if (this.msalService.instance.getAllAccounts().length > 0) {
-            this.router.navigate(['/app/dashboard']);
+            this.router.navigate(['/verifying']);
             return;
         }
 
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
             )
             .subscribe(() => {
                 if (this.msalService.instance.getAllAccounts().length > 0) {
-                    this.router.navigate(['/app/dashboard']);
+                    this.router.navigate(['/verifying']);
                 }
                 this.isLoading.set(false);
             });

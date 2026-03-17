@@ -1,12 +1,27 @@
 <div class="iframe-wrapper">
-    @if (isLoading()) {
+    @if (hasNoReportPermission()) {
+    <div class="no-permission-state">
+        <div class="no-permission-card">
+            <div class="icon-wrap">
+                <mat-icon class="icon">visibility_off</mat-icon>
+            </div>
+            <h2 class="title">You can't access this page</h2>
+            <p class="message">You don't have permission to view reports.</p>
+            <p class="detail">Request access from your administrator or go back to the dashboard.</p>
+            <button mat-raised-button color="primary" class="logout-btn" (click)="logout()">
+                <mat-icon>logout</mat-icon>
+                Logout
+            </button>
+        </div>
+    </div>
+    } @else if (isLoading()) {
     <div class="loading-overlay">
         <mat-spinner diameter="48"></mat-spinner>
         <p>Loading report...</p>
     </div>
     }
 
-    @if (hasError() && !isLoading()) {
+    @if (hasError() && !isLoading() && !hasNoReportPermission()) {
     <div class="error-state">
         <mat-icon class="error-icon">broken_image</mat-icon>
         <h3>Unable to load report</h3>
@@ -19,12 +34,12 @@
     </div>
     }
 
-    @if (safeUrl() && !hasError()) {
+    @if (safeUrl() && !hasError() && !hasNoReportPermission()) {
     <iframe class="report-frame" [src]="safeUrl()!" title="Report" (load)="onIframeLoad($event)"
         (error)="onIframeError()" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
     }
 
-    @if (!safeUrl() && !isLoading() && !hasError()) {
+    @if (!safeUrl() && !isLoading() && !hasError() && !hasNoReportPermission()) {
     <div class="empty-state">
         <mat-icon class="empty-icon">insert_chart</mat-icon>
         <h3>No report selected</h3>

@@ -9,6 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { CommonModule } from '@angular/common';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { UserVerificationService } from '../../auth/user-verification.service';
 
 @Component({
     selector: 'app-header',
@@ -31,6 +32,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         private msalService: MsalService,
         private msalBroadcastService: MsalBroadcastService,
         private router: Router,
+        private userVerification: UserVerificationService,
     ) { }
 
     ngOnInit(): void {
@@ -89,6 +91,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
 
     logout(): void {
+        this.userVerification.clearCache();
         this.msalService.logoutRedirect({
             postLogoutRedirectUri: '/login',
         });

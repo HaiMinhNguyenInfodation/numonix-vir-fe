@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Subscription } from 'rxjs';
 import { MsalService } from '@azure/msal-angular';
 import { ParentBridgeService } from '../auth/auth-bridge.service';
+import { UserVerificationService } from '../auth/user-verification.service';
 import { environment } from '../../environments/environment';
 
 @Component({
@@ -21,6 +22,7 @@ export class IframeContainerComponent implements OnInit, OnDestroy {
     isLoading = signal(true);
     hasError = signal(false);
     errorMessage = signal<string | null>(null);
+    hasNoReportPermission = signal(false);
 
     private sessionId: string | null = null;
     private provider = 'azure-ad';
@@ -30,9 +32,16 @@ export class IframeContainerComponent implements OnInit, OnDestroy {
         private sanitizer: DomSanitizer,
         private msalService: MsalService,
         private parentBridge: ParentBridgeService,
-    ) { }
+        private userVerification: UserVerificationService,
+    ) {}
 
     ngOnInit(): void {
+        const cached = this.userVerification.getCachedResult();
+        if (cached && !cached.canViewReports) {
+            this.hasNoReportPermission.set(true);
+            this.isLoading.set(false);
+            return;
+        }
         this.initBridgeSession();
     }
 
@@ -105,6 +114,13 @@ export class IframeContainerComponent implements OnInit, OnDestroy {
         this.isLoading.set(false);
         this.hasError.set(true);
         this.errorMessage.set(message);
+    }
+
+    logout(): void {
+        this.userVerification.clearCache();
+        this.msalService.logoutRedirect({
+            postLogoutRedirectUri: '/login',
+        });
     }
 
     ngOnDestroy(): void {

@@ -12,4 +12,9 @@ export const environment = {
         iframeAppOrigin: 'https://polite-smoke-0a7b92d00.1.azurestaticapps.net',
         apiKey: 'fd3e68ea-3816-4eed-97cb-3e2aae802edd',
     },
+    numonixVerification: {
+        apiBaseUrl: 'https://openapi.de.numonix.cloud',
+        tenantId: '45991070-7dba-4e53-bcdb-ed9240da3767',
+        nToken: '', // Set in deployment / env for production
+    },
 };
