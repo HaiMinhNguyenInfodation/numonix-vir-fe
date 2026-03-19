@@ -16,6 +16,9 @@ const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
 const REQUIRED_LOGIN = 'LOGIN';
 const REQUIRED_CALL_VIEW = 'CALL_VIEW';
 
+/** Set to true to temporarily skip CALL_VIEW check (all users can open Reports). */
+const SKIP_CALL_VIEW_CHECK = true;
+
 interface CacheEntry {
   result: VerificationResult;
   expiresAt: number;
@@ -113,7 +116,7 @@ export class UserVerificationService {
 
     const permissions = this.collectPermissions(user);
     const hasLogin = permissions.includes(REQUIRED_LOGIN);
-    const hasCallView = permissions.includes(REQUIRED_CALL_VIEW);
+    const hasCallView = SKIP_CALL_VIEW_CHECK || permissions.includes(REQUIRED_CALL_VIEW);
 
     if (!hasLogin) {
       return this.failResult('no_login');
