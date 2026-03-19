@@ -4,6 +4,7 @@ import { MsalService } from '@azure/msal-angular';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { clearMsalTokenFromStorage } from './msal-cache-sync';
 import type {
   NumonixUsersApiResponse,
   NumonixUser,
@@ -80,6 +81,7 @@ export class UserVerificationService {
   clearCache(): void {
     this.cache = null;
     this.cacheKey = null;
+    clearMsalTokenFromStorage();
   }
 
   private getAccountEmail(account: { username?: string; idTokenClaims?: Record<string, unknown> }): string | null {
