@@ -3,8 +3,8 @@ export const environment = {
     msalConfig: {
         clientId: '459e40d6-e96a-4c4e-833f-f43bd5d71885',
         authority: 'https://login.microsoftonline.com/967731f1-e365-496e-b378-fcb5b0c71157',
-        redirectUri: 'https://lemon-grass-08f65b200.4.azurestaticapps.net',
-        postLogoutRedirectUri: 'https://lemon-grass-08f65b200.4.azurestaticapps.net/login',
+        redirectUri: 'https://tcx-insight.teamscx.com/',
+        postLogoutRedirectUri: 'https://tcx-insight.teamscx.com/login',
     },
     apiScopes: ['openid', 'profile', 'email'],
     authBridge: {
