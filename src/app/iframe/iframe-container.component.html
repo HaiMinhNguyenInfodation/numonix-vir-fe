@@ -36,7 +36,8 @@
 
     @if (safeUrl() && !hasError() && !hasNoReportPermission()) {
     <iframe class="report-frame" [src]="safeUrl()!" title="Report" (load)="onIframeLoad($event)"
-        (error)="onIframeError()" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+        (error)="onIframeError()"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-downloads"></iframe>
     }
 
     @if (!safeUrl() && !isLoading() && !hasError() && !hasNoReportPermission()) {
